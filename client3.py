@@ -58,8 +58,14 @@ if __name__ == "__main__":
         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
 
         """ ----------- Update to get the ratio --------------- """
+        """ Created prices Dictionary to store stock (prices) for every iteration in the main method.
+        doing so allows us to recall back our data and retrieving the value,
+        and input that into the getRatio Function."""
+
+        prices = {}
         for quote in quotes:
             stock, bid_price, ask_price, price = getDataPoint(quote)
+            prices[stock] = price
             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
-
-        print("Ratio %s" % getRatio(price, price))
+        # updated as well the print. to be able to call on the dictionary and pass in the name value to retrieve stored value.
+        print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))

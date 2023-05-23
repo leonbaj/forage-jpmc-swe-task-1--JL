@@ -43,8 +43,12 @@ def getDataPoint(quote):
 def getRatio(price_a, price_b):
     """ Get ratio of price_a and price_b """
     """ ------------- Update this function ------------- """
-    
-    return 1
+    """updated function to check if ratio is possible (can be divisable) then provided formula to get ratio of price a and price b. """
+
+    if (price_b == 0):
+        #checks to see if price_b is zero as it will not compute dividing by three.
+        return
+    return price_a/price_b
 
 
 # Main
